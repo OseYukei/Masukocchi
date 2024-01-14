@@ -11,6 +11,8 @@ function main() {
 
     const openai = new OpenAI({ apiKey: process.env.OPEN_AI_API_KEY });
 
+    app.use('/public', express.static('public'));
+
     app.post(
         '/sample',
         async (req: Request<SampleRequest>, res: Response<SampleResponse>) => {
