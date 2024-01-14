@@ -1,0 +1,13 @@
+{
+  "name": "masukocchi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "back": "npm run start --prefix backend",
+    "setup": "npm install --prefix backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
