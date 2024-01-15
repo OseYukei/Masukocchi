@@ -8,11 +8,13 @@
   - node.js
   - （入ってないなら）Chrome
 - Github のアカウント
+  - https://github.com/signup?source=login
   - 頑張って作って
   - 出来たら大瀬に招待してもらう
 - Mattermost のアカウント
   - ここから作れます
   - https://mattermost.0se.uk/signup_user_complete/?id=sxnhi6m8gjdrbd6kp7ne98bkrc&md=link&sbr=fa
+  - これも出来たら大瀬に教えて
 
 ## 環境構築
 
@@ -52,7 +54,9 @@
 3. Masukocchi のディレクトリに移動
 4. `npm run setup`を実行 ※初回だけ
 5. `npm run back`でバックエンド起動
+6. http://localhost:3000/ にアクセス
 
 ## 気をつけるもの
 
 - ChatGPT のアクセスキーは環境変数に入れるように気をつける
+- 2日目終わったらご飯は無し！帰れ！
