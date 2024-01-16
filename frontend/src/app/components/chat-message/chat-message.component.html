@@ -1,0 +1,5 @@
+<div class="row mx-3 my-4" [ngClass]="isMine ? 'justify-content-end' : 'justify-content-start'">
+  <div class="content px-3 py-2 message" [ngClass]="isMine ? 'mine' : 'yours'">
+    {{ content }}
+  </div>
+</div>

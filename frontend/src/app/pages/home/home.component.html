@@ -1,0 +1,23 @@
+<div class="main-content" [formGroup]="form">
+  <div id="messages" #messageArea>
+    <ng-container *ngFor="let message of messages">
+      <app-chat-message [content]="message.content" [isMine]="message.isMine"></app-chat-message>
+    </ng-container>
+    <div class="p-3" *ngIf="isLoading">
+      <app-loading></app-loading>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div id="chat-input" class="input-group">
+      <textarea
+        formControlName="message"
+        class="form-control"
+        [placeholder]="'例：会社に遅刻した時の言い訳を考えて'"
+        [rows]="3"
+      ></textarea>
+      <button class="btn btn-secondary" [disabled]="form.invalid || isLoading" (click)="send()">
+        送信
+      </button>
+    </div>
+  </div>
+</div>
