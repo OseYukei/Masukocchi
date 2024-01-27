@@ -1,33 +1,32 @@
-<div class="">
-  <div id="character-select" class="table-scroll">
-    <div class="row">
-      <div class="col-2 justify-content-center">
-        <button [disabled]="selectedCharacterId === 1" (click)="back()">
-          <img class="select-scroll-img" src="../../assets/back.png" alt="前へ" />
-        </button>
-      </div>
-      <div class="col-8">
-        <ng-container *ngFor="let character of characters">
-          <div class="p-3" *ngIf="character.id === selectedCharacterId">
-            <div class="content px-3 py-2 message">
-              {{ character.name }}
-            </div>
-            <img class="character-img" [src]="character.img" alt="" />
-            <div class="content px-3 py-2 message">
-              {{ character.description }}
-            </div>
-            <div class="row justify-content-center">
-              <button class="btn btn-secondary" (click)="enter()">この人にする</button>
-            </div>
+<div id="character-select" class="">
+  <div class="row">
+    <div class="col-2 justify-content-center d-flex align-items-center vh-100">
+      <button class="" [disabled]="selectedCharacterId === 1" (click)="back()">
+        <img class="select-img" src="assets/button/back.png" alt="前へ" />
+      </button>
+    </div>
+    <div class="col-8 vh-100">
+      <ng-container class="h-100" *ngFor="let character of characters">
+        <div class="p-3 h-100" *ngIf="character.id === selectedCharacterId">
+          <div class="content px-3 py-3 text-center font-weight-bold bg-white" style="height: 10%">
+            {{ character.name }}
           </div>
-        </ng-container>
-      </div>
-
-      <div class="col-2 justify-content-center">
-        <button [disabled]="selectedCharacterId === 4" (click)="next()">
-          <img class="select-scroll-img" src="../../assets/next.png" alt="次へ" />
-        </button>
-      </div>
+          <div style="height: 35%">
+            <img class="w-100" [src]="character.img" [alt]="character.name" />
+          </div>
+          <div class="content px-3 py-2 bg-white" style="height: 45%">
+            {{ character.description }}
+          </div>
+          <div class="row justify-content-center py-3" style="height: 10%">
+            <button class="btn btn-secondary" (click)="enter()">この人にする</button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="col-2 justify-content-center d-flex align-items-center vh-100">
+      <button [disabled]="selectedCharacterId === 4" (click)="next()">
+        <img class="select-img" src="assets/button/next.png" alt="次へ" />
+      </button>
     </div>
   </div>
 </div>

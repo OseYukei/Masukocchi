@@ -15,7 +15,8 @@ export class CharacterSelectComponent {
       id: 1,
       name: '裁判官',
       img: 'assets/character/saibankan.png',
-      description: '説明文',
+      description:
+        '説明文ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ（全角１４０文字）',
     },
     {
       id: 2,
@@ -37,6 +38,7 @@ export class CharacterSelectComponent {
     },
   ];
 
+  /** 選択してるキャラクターID */
   selectedCharacterId: number = 1;
 
   constructor(private openAiService: OpenAiService, private router: Router) {}
