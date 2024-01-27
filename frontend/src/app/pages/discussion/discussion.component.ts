@@ -110,21 +110,21 @@ export class DiscussionComponent implements OnInit {
     }
   }
 
-  onClickButton() {
+  onClickNext() {
     switch (this.currentScence) {
       case 'relationship':
         this.discussion.relationship = this.message.value;
-        this.message.setValue('');
+        this.message.setValue(this.discussion.reason);
         this.currentScence = 'reason';
         break;
       case 'reason':
         this.discussion.reason = this.message.value;
-        this.message.setValue('');
+        this.message.setValue(this.discussion.opinionA);
         this.currentScence = 'opinionA';
         break;
       case 'opinionA':
         this.discussion.opinionA = this.message.value;
-        this.message.setValue('');
+        this.message.setValue(this.discussion.opinionB);
         this.currentScence = 'opinionB';
         break;
       case 'opinionB':
@@ -133,9 +133,29 @@ export class DiscussionComponent implements OnInit {
         this.openAiService.discuss(this.discussion).subscribe((res) => {
           this.isLoading = false;
           sessionStorage.setItem('answer', res.answer);
-          // TODO:結果画面のパス決まり次第ちゃんと設定
           this.router.navigate(['result']);
         });
+        break;
+    }
+    this.question = this.getCharaQuestion();
+  }
+
+  onClickPrev() {
+    switch (this.currentScence) {
+      case 'reason':
+        this.discussion.reason = this.message.value;
+        this.message.setValue(this.discussion.relationship);
+        this.currentScence = 'relationship';
+        break;
+      case 'opinionA':
+        this.discussion.opinionA = this.message.value;
+        this.message.setValue(this.discussion.reason);
+        this.currentScence = 'reason';
+        break;
+      case 'opinionB':
+        this.discussion.opinionB = this.message.value;
+        this.message.setValue(this.discussion.opinionA);
+        this.currentScence = 'opinionA';
         break;
     }
     this.question = this.getCharaQuestion();
