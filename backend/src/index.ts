@@ -71,10 +71,12 @@ function main() {
 
   // 質疑応答
   app.post('/discussion', async (req: Request<DiscussionRequest>, res: Response<DiscussionResponse>) => {
-    discussionData.relationship = req.body.relationship;
-    discussionData.reason = req.body.reason;
-    discussionData.opinionA = req.body.opinionA;
-    discussionData.opinionB = req.body.opinionB;
+    discussionData = {
+      relationship: req.body.relationship,
+      reason: req.body.reason,
+      opinionA: req.body.opinionA,
+      opinionB: req.body.opinionB
+    }
 
     // プロンプト内にデータを埋め込み
     promptData.replace("reason", discussionData.reason);
