@@ -15,7 +15,7 @@ export class ResultComponent implements OnInit {
   constructor(private openAiService: OpenAiService, private router: Router) {}
 
   ngOnInit() {
-    this.answer = sessionStorage.getItem('answer') || '';
+    this.answer = sessionStorage.getItem('answer')! + '\n ';
 
     this.openAiService.getSetting().subscribe((res) => {
       switch (res.character) {

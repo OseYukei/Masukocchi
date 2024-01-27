@@ -6,11 +6,15 @@
     </div>
   </div>
   <div [formGroup]="form">
-    <div class="input-group mb-4 shadow-sm">
+    <div class="input-group mb-4 shadow-sm rounded-3 border border-dark-subtle border-1">
       <span class="input-group-text">名前</span>
       <input type="text" class="form-control" formControlName="name" />
     </div>
-    <div class="input-group mb-4 shadow-sm">
+    <div class="input-group mb-4 shadow-sm rounded-3 border border-dark-subtle border-1">
+      <span class="input-group-text">年齢</span>
+      <input type="number" class="form-control" formControlName="age" />
+    </div>
+    <div class="input-group mb-4 shadow-sm rounded-3 border border-dark-subtle border-1">
       <span class="input-group-text">性別</span>
       <select class="form-select" formControlName="gender">
         <ng-container *ngFor="let gender of genders">
@@ -18,11 +22,7 @@
         </ng-container>
       </select>
     </div>
-    <div class="input-group mb-4 shadow-sm">
-      <span class="input-group-text">年齢</span>
-      <input type="number" class="form-control" formControlName="age" />
-    </div>
-    <div class="input-group mb-4 shadow-sm">
+    <div class="input-group mb-4 shadow-sm rounded-3 border border-dark-subtle border-1">
       <span class="input-group-text">性格</span>
       <select class="form-select" formControlName="personality">
         <ng-container *ngFor="let personality of personalities">
