@@ -2,6 +2,7 @@ import express, { Response } from 'express';
 import OpenAI from 'openai';
 import cors from 'cors';
 import { ChatRequest, ChatResponse } from '../../common/types/chat';
+import { UserRegistRequest, UserRegistResponse } from '../../common/types/user';
 
 main();
 
@@ -19,6 +20,34 @@ function main() {
   // メッセージ履歴
   let messageHistory: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [];
 
+  // ユーザデータ
+  let userData = [{
+    "userName": "",
+    "gender": "",
+    "age": -1,
+    "personality": "",
+  }];
+
+  // 選択したキャラクター
+  let selectedCharacter = "";
+
+  // ユーザーのキャラクリエイト
+  app.post('/user', async (req: Request<UserRegistRequest>, res: Response<UserRegistResponse>) => {
+    if (userData.length == 0) {
+      userData[0].userName = req.body.name;
+      userData[0].gender = req.body.gender;
+      userData[0].age = req.body.age;
+      userData[0].personality = req.body.personality;
+      res.send({ result: "next" });
+    } else {
+      userData[1].userName = req.body.name;
+      userData[1].gender = req.body.gender;
+      userData[1].age = req.body.age;
+      userData[1].personality = req.body.personality;
+      res.send({ result: "complete" });
+    }
+  });
+
   // チャットGPT
   app.post('/chat', async (req: Request<ChatRequest>, res: Response<ChatResponse>) => {
     messageHistory.push({ role: 'user', content: req.body.content });
@@ -35,7 +64,12 @@ function main() {
 
   // メッセージ履歴をリセット
   app.post('/reset', (req, res) => {
-    messageHistory = [];
+    userData = [{
+      "userName": "",
+      "gender": "",
+      "age": -1,
+      "personality": "",
+    }];
     res.sendStatus(200);
   });
 
