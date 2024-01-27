@@ -3,7 +3,7 @@ import OpenAI from 'openai';
 import cors from 'cors';
 import { Character, GetSettingResponse } from '../../common/types/setting';
 import { UserRegistRequest, UserRegistResponse } from '../../common/types/user';
-import { CharacterRegistRequest } from '../../common/types/character'
+import { CharacterRegistRequest, CharacterRegistResponse } from '../../common/types/character'
 import { DiscussionRequest, DiscussionResponse } from '../../common/types/discussion';
 
 main();
@@ -45,7 +45,7 @@ function main() {
 
   // 遊ぶキャラクター選択
   // このタイミングで使用するプロンプトも決定
-  app.post('/character', async (req: Request<CharacterRegistRequest>, res) => {
+  app.post('/character', async (req: Request<CharacterRegistRequest>, res: Response<CharacterRegistResponse>) => {
     selectedCharacter = req.body.character;
     switch (selectedCharacter) {
       case "裁判官":
@@ -62,6 +62,8 @@ function main() {
         break;
       default:
     }
+
+    res.send({ isSuccess: true});
   });
 
   // フロント側にユーザデータと選択されたキャラクタデータを送信
