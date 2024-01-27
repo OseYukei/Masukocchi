@@ -42,7 +42,7 @@ export class CharacterSelectComponent {
     {
       id: 0,
       name: '追加予定キャラクター',
-      img: 'assets/character/comming-soon.png',
+      img: 'assets/character/coming-soon.png',
       description:
         '<br>次期アップデートにて追加実装予定<br>アップデートをお待ちください…<br><br><br><br><br>判決結果：<br>　<br><br><br>向いてる場面：<br>',
     },
