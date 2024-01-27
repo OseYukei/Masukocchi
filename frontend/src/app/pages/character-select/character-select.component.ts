@@ -40,16 +40,16 @@ export class CharacterSelectComponent {
         'よく来たな、愚かなる者ども…俺は全否定マン。<br>世の中のあらゆる意見を跳ね除け、暗黒の中で支配を狙う者だ。喧嘩をしたからどちらが悪いか判断してほしいだと？ふん、貴様らの喧嘩も、くだらん主張もどうでもいい。貴様らのその主張、この俺様がすべて否定してやる…。<br><br>判決結果：<br>　両者の意見を全否定してくれます。<br><br><br>向いてる場面：<br>　とにかく否定されたいとき',
     },
     {
-      id: 5,
+      id: 0,
       name: '追加予定キャラクター',
       img: 'assets/character/comming-soon.png',
       description:
-        '<br><br>次期アップデートにて追加実装予定<br>アップデートをお待ちください…<br><br><br><br>判決結果：<br>　<br><br><br>向いてる場面：<br>',
+        '<br>次期アップデートにて追加実装予定<br>アップデートをお待ちください…<br><br><br><br><br>判決結果：<br>　<br><br><br>向いてる場面：<br>',
     },
   ];
 
   /** 選択してるキャラクターID */
-  selectedCharacterId: number = 1;
+  selectedCharacterId: number = 1001;
 
   constructor(private openAiService: OpenAiService, private router: Router) {}
 
@@ -63,7 +63,7 @@ export class CharacterSelectComponent {
 
   enter() {
     const selectedCharacter = this.characters.find(
-      (element) => element.id === this.selectedCharacterId
+      (element) => element.id === this.selectedCharacterId % 5
     );
 
     const request = {
