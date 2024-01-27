@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { ChatRequest, ChatResponse } from '../../../../common/types/chat';
 import { DiscussionRequest, DiscussionResponse } from '../../../../common/types/discussion';
 import { GetSettingResponse } from '../../../../common/types/setting';
+import {
+  CharacterRegistRequest,
+  CharacterRegistResponse,
+} from '../../../../common/types/character';
 import { UserRegistRequest, UserRegistResponse } from '../../../../common/types/user';
 import { environment } from '../../environment';
 
@@ -34,5 +38,9 @@ export class OpenAiService {
   // 質問の回答送信
   discuss(req: DiscussionRequest): Observable<DiscussionResponse> {
     return this.httpClient.post<DiscussionResponse>(`${environment.apiUrl}/discussion`, req);
+  }
+
+  sendCharacter(req: CharacterRegistRequest): Observable<CharacterRegistResponse> {
+    return this.httpClient.post<CharacterRegistResponse>(`${environment.apiUrl}/character`, req);
   }
 }
