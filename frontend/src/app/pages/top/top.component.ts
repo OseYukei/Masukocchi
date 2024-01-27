@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { OpenAiService } from '../../service/open-ai.service';
 
 @Component({
   selector: 'app-top',
@@ -11,8 +12,10 @@ export class TopComponent {
   fadeInId: number = 0;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private openAiService: OpenAiService,
   ) {
+    this.openAiService.reset().subscribe();
   }
 
   ngOnInit() {
