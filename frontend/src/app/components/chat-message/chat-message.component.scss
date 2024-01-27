@@ -1,5 +1,5 @@
 .message {
-  max-width: 500px;
+  max-width: 260px;
   word-wrap: break-word;
   white-space: pre-wrap;
 }
@@ -18,4 +18,10 @@
 
 .content {
   width: fit-content;
+}
+
+.avater {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
 }

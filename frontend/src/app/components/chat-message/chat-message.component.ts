@@ -11,4 +11,7 @@ export class ChatMessageComponent {
 
   @Input()
   isMine: boolean = false;
+
+  @Input()
+  avater: string = '';
 }
