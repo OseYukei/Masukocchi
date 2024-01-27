@@ -1,0 +1,25 @@
+<ng-container *ngIf="setting">
+  <div class="my-5">
+    <app-chat-message [content]="question" [isMine]="false" [avater]="avater"></app-chat-message>
+  </div>
+  <div [formGroup]="form">
+    <div class="mx-3 my-5 shadow-sm">
+      <textarea
+        formControlName="message"
+        class="form-control"
+        [rows]="12"
+        [placeholder]="'質問の回答を入力してください'"
+      ></textarea>
+    </div>
+    <div class="row justify-content-center px-3 pt-5">
+      <button
+        type="button"
+        class="col-11 btn btn-primary shadow-sm"
+        [disabled]="form.invalid || this.isLoading"
+        (click)="onClickButton()"
+      >
+        {{ currentScence !== 'opinionB' ? '次の質問へ' : '完了' }}
+      </button>
+    </div>
+  </div>
+</ng-container>
