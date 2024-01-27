@@ -8,18 +8,18 @@
     <div class="col-8 vh-100">
       <ng-container class="h-100" *ngFor="let character of characters">
         <div class="p-3 h-100" *ngIf="character.id === selectedCharacterId">
-          <div class="content px-3 py-3 text-center font-weight-bold bg-white" style="height: 10%">
+          <div class="content px-3 py-2 text-center font-weight-bold bg-white" style="height: 5%">
             {{ character.name }}
           </div>
-          <div style="height: 35%">
+          <div style="height: 28%">
             <img class="w-100" [src]="character.img" [alt]="character.name" />
           </div>
           <div
             class="balloon1-top content px-3 py-2 bg-white"
-            style="height: 45%"
+            style="height: 52%"
             [innerHTML]="character.description"
           ></div>
-          <div class="row justify-content-center py-3" style="height: 10%">
+          <div class="row justify-content-center py-5" style="height: 15%">
             <button class="btn btn-custom" (click)="enter()">この人にする</button>
           </div>
         </div>
