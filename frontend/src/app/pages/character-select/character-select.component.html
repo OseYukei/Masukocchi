@@ -4,7 +4,7 @@
       <ng-container class="h-100" *ngFor="let character of characters">
         <div class="p-3 h-100" *ngIf="character.id === selectedCharacterId % 5">
           <div class="character-name" style="height: 11%">
-            <div class="content px-3 py-2 text-center" style="font-weight: bold">
+            <div class="content px-3 py-2 text-center fs-1" style="font-weight: bold">
               {{ character.name }}
             </div>
           </div>
@@ -33,7 +33,7 @@
           </div>
           <div
             class="rounded-3 border border-dark-subtle border-2 px-3 py-3 bg-white"
-            style="height: 50%"
+            style="height: 50%; font-weight: bold"
             [innerHTML]="character.description"
           ></div>
           <div class="row justify-content-center py-5" style="height: 10%">
