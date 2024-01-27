@@ -11,6 +11,11 @@ img {
     background-size: 100%;
 }
 
+.character-select-button:disabled {
+    opacity: 25%;
+}
+
+
 .balloon {
     display: flex;
     justify-content: center;

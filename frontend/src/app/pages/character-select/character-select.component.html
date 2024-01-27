@@ -10,7 +10,12 @@
           </div>
           <div class="row" style="height: 25%">
             <div class="col-2 justify-content-center d-flex align-items-center">
-              <button class="" [disabled]="selectedCharacterId === 1" (click)="back()">
+              <button
+                style="border: none; background: transparent"
+                class="character-select-button"
+                [disabled]="selectedCharacterId === 1"
+                (click)="back()"
+              >
                 <img class="select-img" src="assets/button/back.png" alt="前へ" />
               </button>
             </div>
@@ -18,7 +23,12 @@
               <img [src]="character.img" [alt]="character.name" />
             </div>
             <div class="col-2 justify-content-center d-flex align-items-center">
-              <button [disabled]="selectedCharacterId === 5" (click)="next()">
+              <button
+                style="border: none; background: transparent"
+                class="character-select-button"
+                [disabled]="selectedCharacterId === 5"
+                (click)="next()"
+              >
                 <img class="select-img" src="assets/button/next.png" alt="次へ" />
               </button>
             </div>
