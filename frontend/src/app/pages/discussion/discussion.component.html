@@ -13,14 +13,31 @@
     </div>
     <div class="container">
       <div class="row justify-content-center px-3 pt-5">
-        <button
-          type="button"
-          class="btn btn-custom shadow-sm"
-          [disabled]="form.invalid || this.isLoading"
-          (click)="onClickButton()"
-        >
-          {{ currentScence !== 'opinionB' ? '次の質問へ' : '完了' }}
-        </button>
+        <div class="col-6">
+          <div class="row pe-4">
+            <button
+              *ngIf="currentScence !== 'relationship'"
+              type="button"
+              class="btn btn-custom shadow-sm"
+              [disabled]="this.isLoading"
+              (click)="onClickPrev()"
+            >
+              前の質問へ
+            </button>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row justify-content-end ps-4">
+            <button
+              type="button"
+              class="btn btn-custom shadow-sm"
+              [disabled]="form.invalid || this.isLoading"
+              (click)="onClickNext()"
+            >
+              {{ currentScence !== 'opinionB' ? '次の質問へ' : '完了' }}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
