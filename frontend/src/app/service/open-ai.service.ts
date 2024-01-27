@@ -33,6 +33,6 @@ export class OpenAiService {
 
   // 質問の回答送信
   discuss(req: DiscussionRequest): Observable<DiscussionResponse> {
-    return this.httpClient.post<DiscussionResponse>(`${environment.apiUrl}/discuss`, req);
+    return this.httpClient.post<DiscussionResponse>(`${environment.apiUrl}/discussion`, req);
   }
 }
