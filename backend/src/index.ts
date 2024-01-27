@@ -1,10 +1,10 @@
+import cors from 'cors';
 import express, { Response } from 'express';
 import OpenAI from 'openai';
-import cors from 'cors';
+import { CharacterRegistRequest, CharacterRegistResponse } from '../../common/types/character';
+import { DiscussionRequest, DiscussionResponse } from '../../common/types/discussion';
 import { Character, GetSettingResponse } from '../../common/types/setting';
 import { UserRegistRequest, UserRegistResponse } from '../../common/types/user';
-import { CharacterRegistRequest, CharacterRegistResponse } from '../../common/types/character'
-import { DiscussionRequest, DiscussionResponse } from '../../common/types/discussion';
 
 main();
 
@@ -81,18 +81,18 @@ function main() {
     }
 
     // プロンプト内にデータを埋め込み
-    promptData.replace("reason", discussionData.reason);
-    promptData.replace("relationship", discussionData.relationship);
-    promptData.replace("userA", userData[0].userName);
-    promptData.replace("userAGender", userData[0].gender);
-    promptData.replace("userAAge", String(userData[0].age));
-    promptData.replace("userAPersonality", userData[0].personality);
-    promptData.replace("userAOpinion", discussionData.opinionA);
-    promptData.replace("userB", userData[1].userName);
-    promptData.replace("userBGender", userData[1].gender);
-    promptData.replace("userBAge", String(userData[1].age));
-    promptData.replace("userBPersonality", userData[1].personality);
-    promptData.replace("userBOpinion", discussionData.opinionB);
+    promptData = promptData.replace("reason", discussionData.reason);
+    promptData = promptData.replace("relationship", discussionData.relationship);
+    promptData = promptData.replace("userA", userData[0].userName);
+    promptData = promptData.replace("userAGender", userData[0].gender);
+    promptData = promptData.replace("userAAge", String(userData[0].age));
+    promptData = promptData.replace("userAPersonality", userData[0].personality);
+    promptData = promptData.replace("userAOpinion", discussionData.opinionA);
+    promptData = promptData.replace("userB", userData[1].userName);
+    promptData = promptData.replace("userBGender", userData[1].gender);
+    promptData = promptData.replace("userBAge", String(userData[1].age));
+    promptData = promptData.replace("userBPersonality", userData[1].personality);
+    promptData = promptData.replace("userBOpinion", discussionData.opinionB);
 
     sendPrompt.push({ role: 'user', content: promptData });
 
