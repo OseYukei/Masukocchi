@@ -1,18 +1,27 @@
 <div id="character-select" class="">
-  <div class="row">
-    <div class="col-2 justify-content-center d-flex align-items-center vh-100">
-      <button class="" [disabled]="selectedCharacterId === 1" (click)="back()">
-        <img class="select-img" src="assets/button/back.png" alt="前へ" />
-      </button>
-    </div>
-    <div class="col-8 vh-100">
+  <div class="">
+    <div class="vh-100">
       <ng-container class="h-100" *ngFor="let character of characters">
         <div class="p-3 h-100" *ngIf="character.id === selectedCharacterId">
-          <div class="content px-3 py-2 text-center font-weight-bold bg-white" style="height: 5%">
-            {{ character.name }}
+          <div style="height: 5%">
+            <div class="content px-3 py-2 text-center bg-white">
+              {{ character.name }}
+            </div>
           </div>
-          <div style="height: 28%">
-            <img class="w-100" [src]="character.img" [alt]="character.name" />
+          <div class="row" style="height: 28%">
+            <div class="col-2 justify-content-center d-flex align-items-center">
+              <button class="" [disabled]="selectedCharacterId === 1" (click)="back()">
+                <img class="select-img" src="assets/button/back.png" alt="前へ" />
+              </button>
+            </div>
+            <div class="col-8 justify-content-center d-flex align-items-center">
+              <img [src]="character.img" [alt]="character.name" />
+            </div>
+            <div class="col-2 justify-content-center d-flex align-items-center">
+              <button [disabled]="selectedCharacterId === 4" (click)="next()">
+                <img class="select-img" src="assets/button/next.png" alt="次へ" />
+              </button>
+            </div>
           </div>
           <div
             class="balloon1-top content px-3 py-2 bg-white"
@@ -20,15 +29,10 @@
             [innerHTML]="character.description"
           ></div>
           <div class="row justify-content-center py-5" style="height: 15%">
-            <button class="btn btn-custom" (click)="enter()">この人にする</button>
+            <button class="col-11 btn btn-custom" (click)="enter()">この人にする</button>
           </div>
         </div>
       </ng-container>
-    </div>
-    <div class="col-2 justify-content-center d-flex align-items-center vh-100">
-      <button [disabled]="selectedCharacterId === 4" (click)="next()">
-        <img class="select-img" src="assets/button/next.png" alt="次へ" />
-      </button>
     </div>
   </div>
 </div>
