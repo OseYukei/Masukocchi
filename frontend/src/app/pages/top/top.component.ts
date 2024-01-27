@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class TopComponent {
 
+  fadeInId: number = 0;
+
   constructor(
     private router: Router
   ) {
@@ -15,20 +17,22 @@ export class TopComponent {
 
   ngOnInit() {
     let i = 0;
-    const id = setInterval(function(){
+    const MAX = 100;
+    this.fadeInId = window.setInterval(() => {
       const mainLogo = document.querySelector('#main-logo') as HTMLElement;
       const startButton = document.querySelector('#start-button') as HTMLElement;
-      mainLogo.style.opacity = (++i / 100).toString();
+      mainLogo.style.opacity = (++i / MAX).toString();
       mainLogo.style.paddingTop = i.toString() + 'px';
-      startButton.style.paddingTop = (100 - i).toString() + 'px'
+      startButton.style.paddingTop = (MAX - i).toString() + 'px'
       
-      if (i === 100) {
-        clearInterval(id);
+      if (i === MAX) {
+        clearInterval(this.fadeInId);
       }
-    }, 17);
+    }, 12);
   }
 
   onSubmit() {
     this.router.navigate(['user-regist']);
+    clearInterval(this.fadeInId);
   }
 }
