@@ -21,21 +21,39 @@ export class TopComponent {
   ngOnInit() {
     let i = 0;
     const MAX = 100;
+    
+    const mainLogo = document.querySelector('#main-logo') as HTMLElement;
+    const startButton = document.querySelector('#start-button') as HTMLElement;
     this.fadeInId = window.setInterval(() => {
-      const mainLogo = document.querySelector('#main-logo') as HTMLElement;
-      const startButton = document.querySelector('#start-button') as HTMLElement;
-      mainLogo.style.opacity = (++i / MAX).toString();
+      i++;
+      mainLogo.style.opacity = (i / MAX).toString();
       mainLogo.style.paddingTop = i.toString() + 'px';
+      startButton.style.opacity = (i / MAX).toString();
       startButton.style.paddingTop = (MAX - i).toString() + 'px'
       
       if (i === MAX) {
         clearInterval(this.fadeInId);
       }
-    }, 12);
+    }, 13);
   }
 
   onSubmit() {
-    this.router.navigate(['user-regist']);
     clearInterval(this.fadeInId);
+
+    let i = 0;
+    const MAX = 100;
+    
+    const mainLogo = document.querySelector('#main-logo') as HTMLElement;
+    const startButton = document.querySelector('#start-button') as HTMLElement;
+    this.fadeInId = window.setInterval(() => {
+      i++;
+      mainLogo.style.opacity = ((MAX - i) / MAX).toString();
+      startButton.style.opacity = ((MAX - i) / MAX).toString();
+      
+      if (i === MAX) {
+        clearInterval(this.fadeInId);
+        this.router.navigate(['user-regist']);
+      }
+    }, 1);
   }
 }
