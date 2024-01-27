@@ -1,0 +1,28 @@
+<div class="container main">
+  <div [formGroup]="form">
+    <div class="input-group pb-3">
+      <span class="input-group-text">名前</span>
+      <input type="text" class="form-control" formControlName="name" />
+    </div>
+    <div class="input-group pb-3">
+      <span class="input-group-text">性別</span>
+      <select class="form-select" formControlName="gender">
+        <ng-container *ngFor="let gender of genders">
+          <option value="{{ gender }}">{{ gender }}</option>
+        </ng-container>
+      </select>
+    </div>
+    <div class="input-group pb-3">
+      <span class="input-group-text">年齢</span>
+      <input type="number" class="form-control" formControlName="age" />
+    </div>
+    <div class="input-group pb-3">
+      <span class="input-group-text">性格</span>
+      <select class="form-select" formControlName="personality">
+        <ng-container *ngFor="let personality of personalities">
+          <option value="{{ personality }}">{{ personality }}</option>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+</div>

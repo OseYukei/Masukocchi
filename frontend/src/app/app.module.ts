@@ -9,9 +9,10 @@ import { ChatMessageComponent } from './components/chat-message/chat-message.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './components/loading/loading.component';
+import { UserRegistComponent } from './pages/user-regist/user-regist.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ChatMessageComponent, LoadingComponent],
+  declarations: [AppComponent, HomeComponent, ChatMessageComponent, LoadingComponent, UserRegistComponent],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
