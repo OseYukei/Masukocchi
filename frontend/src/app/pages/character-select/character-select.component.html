@@ -14,9 +14,11 @@
           <div style="height: 35%">
             <img class="w-100" [src]="character.img" [alt]="character.name" />
           </div>
-          <div class="content px-3 py-2 bg-white" style="height: 45%">
-            {{ character.description }}
-          </div>
+          <div
+            class="balloon1-top content px-3 py-2 bg-white"
+            style="height: 45%"
+            [innerHTML]="character.description"
+          ></div>
           <div class="row justify-content-center py-3" style="height: 10%">
             <button class="btn btn-custom" (click)="enter()">この人にする</button>
           </div>
