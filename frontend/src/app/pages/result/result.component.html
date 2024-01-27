@@ -1,3 +1,10 @@
+<div 
+  id="judge-modal"
+  class="position-fixed w-100 h-100 d-flex align-items-center justify-content-center"
+  *ngIf="isWin || isLose">
+    <img src="/assets/shohai/win.png" *ngIf="isWin" (click)="onClickModal()"/>
+    <img src="/assets/shohai/lose.png" *ngIf="isLose" (click)="onClickModal()"/>
+</div>
 <div class="container" *ngIf="avater && answer">
   <div class="row justify-content-center pt-3 mb-2">
     <img src="{{ avater }}" />

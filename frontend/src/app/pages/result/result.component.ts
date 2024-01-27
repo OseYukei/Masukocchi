@@ -12,6 +12,9 @@ export class ResultComponent implements OnInit {
 
   avater = '';
 
+  isWin = false;
+  isLose = false;
+
   constructor(private openAiService: OpenAiService, private router: Router) {}
 
   ngOnInit() {
@@ -21,6 +24,11 @@ export class ResultComponent implements OnInit {
       switch (res.character) {
         case '裁判官':
           this.avater = 'assets/character/saibankan.png';
+          if (-1 !== this.answer.indexOf('勝訴')) {
+            this.isWin = true;
+          } else if (-1 !== this.answer.indexOf('敗訴')) {
+            this.isLose = true;
+          }
           break;
         case 'オネエ':
           this.avater = 'assets/character/okama.png';
@@ -37,5 +45,10 @@ export class ResultComponent implements OnInit {
 
   onClickButton() {
     this.router.navigate(['top']);
+  }
+
+  onClickModal() {
+    this.isWin = false;
+    this.isLose = false;
   }
 }

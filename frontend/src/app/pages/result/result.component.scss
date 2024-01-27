@@ -41,3 +41,11 @@ img {
   top: -11px;
   background-color: #fff;
 }
+
+#judge-modal {
+  z-index: 1000;
+  background:rgba(0,0,0,0.6);
+  img {
+    width: 300px;
+  }
+}
