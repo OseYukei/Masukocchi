@@ -2,7 +2,9 @@ import express, { Response } from 'express';
 import OpenAI from 'openai';
 import cors from 'cors';
 import { ChatRequest, ChatResponse } from '../../common/types/chat';
+import { Character, GetSettingResponse } from '../../common/types/setting';
 import { UserRegistRequest, UserRegistResponse } from '../../common/types/user';
+import { DiscussionRequest, DiscussionResponse } from '../../common/types/discussion';
 
 main();
 
@@ -21,31 +23,39 @@ function main() {
   let messageHistory: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [];
 
   // ユーザデータ
-  let userData = [{
-    "userName": "",
-    "gender": "",
-    "age": -1,
-    "personality": "",
-  }];
+  let userData: UserData[] = [];
 
   // 選択したキャラクター
-  let selectedCharacter = "";
+  let selectedCharacter: Character = "裁判官";
+
+  // プロンプト
+  let promptJudge = "あなたは裁判官です。以下の情報を元に、判決とその理由を教えてください。判決結果については、「勝訴」「敗訴」のどちらかを必ず決定してください。また、判決結果は以下のフォーマットでまとめてください。・判決：判決に至った経緯を具体的にまとめ・判決理由：判決の理由を箇条書き・判決結果：原告であるユーザAの主張が成り立つ可能性が高いと判断されるため、ユーザAの「勝訴・敗訴」とします。議題：プリンを食べられた。二人の関係性：きょうだい原告：ユーザA性別：男年齢：20性格：おとなしい主張：昨日自分で買ったプリンをユーザBに食べられた。被告：ユーザB性別：女年齢：19性格：嘘つき主張：確かに食べたが食べてもいいといわれた。";
+  let promptGay = "あなたはオネエです。以下の情報を元に、喧嘩を仲裁してください。ーザAの主張が成り立つ可能性が高いと判断されるため、ユーザAの「勝訴・敗訴」とします。議題：プリンを食べられた。二人の関係性：きょうだい原告：ユーザA性別：男年齢：20性格：おとなしい主張：昨日自分で買ったプリンをユーザBに食べられた。被告：ユーザB性別：女年齢：19性格：嘘つき主張：確かに食べたが食べてもいいといわれた。";;
 
   // ユーザーのキャラクリエイト
   app.post('/user', async (req: Request<UserRegistRequest>, res: Response<UserRegistResponse>) => {
-    if (userData.length == 0) {
-      userData[0].userName = req.body.name;
-      userData[0].gender = req.body.gender;
-      userData[0].age = req.body.age;
-      userData[0].personality = req.body.personality;
+    const user = { userName: req.body.name, gender: req.body.gender, age: req.body.age, personality: req.body.personality };
+    userData.push(user);
+    if (userData.length == 1) {
       res.send({ result: "next" });
     } else {
-      userData[1].userName = req.body.name;
-      userData[1].gender = req.body.gender;
-      userData[1].age = req.body.age;
-      userData[1].personality = req.body.personality;
       res.send({ result: "complete" });
     }
+  });
+
+  // 遊ぶキャラクター選択
+  app.post('/user', async (req: Request<UserRegistRequest>, res: Response<UserRegistResponse>) => {
+    selectedCharacter = req.body.;
+  });
+
+  // フロント側にユーザデータと選択されたキャラクタデータを送信
+  app.post('/setting', (req, res: Response<GetSettingResponse>) => {
+    res.send({ character: selectedCharacter, nameA: userData[0].userName, nameB: userData[1].userName })
+  });
+
+  // 質疑応答
+  app.post('/discussion', (req: Request<DiscussionRequest>, res: Response<DiscussionRequest>) => {
+    res.send({ answer: ""})
   });
 
   // チャットGPT
@@ -64,12 +74,7 @@ function main() {
 
   // メッセージ履歴をリセット
   app.post('/reset', (req, res) => {
-    userData = [{
-      "userName": "",
-      "gender": "",
-      "age": -1,
-      "personality": "",
-    }];
+    userData = [];
     res.sendStatus(200);
   });
 
@@ -80,4 +85,11 @@ function main() {
 
 export interface Request<T> extends Express.Request {
   body: T;
+}
+
+interface UserData {
+  userName: string;
+  gender: string;
+  age: number;
+  personality: string;
 }
