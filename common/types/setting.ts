@@ -4,4 +4,9 @@ export interface GetSettingResponse {
   nameB: string;
 }
 
-export type Character = "裁判官" | "オネエ" | "全肯定マン" | "全否定マン";
+export type Character =
+  | "裁判官"
+  | "オネエ"
+  | "全肯定マン"
+  | "全否定マン"
+  | "追加予定キャラクター";

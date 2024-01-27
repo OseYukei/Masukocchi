@@ -6,24 +6,43 @@ img {
     width: 40px;
 }
 
-.balloon1-top {
+.character-name {
+    background: url("/assets/background/character-name.png") no-repeat center center;
+    background-size: 100%;
+}
+
+.balloon {
+    display: flex;
+    justify-content: center;
     position: relative;
-    display: inline-block;
-    // margin: 1.5em 0;
-    padding: 7px 10px;
-    min-width: 120px;
-    max-width: 100%;
-    color: #555;
-    font-size: 16px;
-    background: #fff;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
+    margin-top: 15px;
+    padding: 0.8em 1em;
+    border: 3px solid #2589d0;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333333;
+    word-wrap: break-word;
+    white-space: pre-wrap;
   }
   
-  .balloon1-top:before {
-    content: "";
+  .balloon::before,
+  .balloon::after {
     position: absolute;
-    top: -30px;
-    left: 50%;
-    margin-left: -15px;
-    border: 15px solid transparent;
-    border-bottom: 15px solid #fff;
+    top: -15px;
+    width: 30px;
+    height: 15px;
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+    content: '';
+  }
+  
+  .balloon::before {
+    background-color: #2589d0;
+  }
+  
+  .balloon::after {
+    top: -11px;
+    background-color: #fff;
   }

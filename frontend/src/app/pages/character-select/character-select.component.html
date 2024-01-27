@@ -3,12 +3,12 @@
     <div class="vh-100">
       <ng-container class="h-100" *ngFor="let character of characters">
         <div class="p-3 h-100" *ngIf="character.id === selectedCharacterId">
-          <div style="height: 5%">
-            <div class="content px-3 py-2 text-center bg-white">
+          <div class="character-name" style="height: 10%">
+            <div class="content px-3 py-2 text-center" style="font-weight: bold">
               {{ character.name }}
             </div>
           </div>
-          <div class="row" style="height: 28%">
+          <div class="row" style="height: 25%">
             <div class="col-2 justify-content-center d-flex align-items-center">
               <button class="" [disabled]="selectedCharacterId === 1" (click)="back()">
                 <img class="select-img" src="assets/button/back.png" alt="前へ" />
@@ -18,18 +18,24 @@
               <img [src]="character.img" [alt]="character.name" />
             </div>
             <div class="col-2 justify-content-center d-flex align-items-center">
-              <button [disabled]="selectedCharacterId === 4" (click)="next()">
+              <button [disabled]="selectedCharacterId === 5" (click)="next()">
                 <img class="select-img" src="assets/button/next.png" alt="次へ" />
               </button>
             </div>
           </div>
           <div
-            class="balloon1-top content px-3 py-2 bg-white"
-            style="height: 52%"
+            class="rounded-3 border border-dark-subtle border-2 px-3 py-3 bg-white"
+            style="height: 50%"
             [innerHTML]="character.description"
           ></div>
-          <div class="row justify-content-center py-5" style="height: 15%">
-            <button class="col-11 btn btn-custom" (click)="enter()">この人にする</button>
+          <div class="row justify-content-center py-5" style="height: 10%">
+            <button
+              [disabled]="selectedCharacterId === 5"
+              class="col-11 btn btn-custom"
+              (click)="enter()"
+            >
+              この人にする
+            </button>
           </div>
         </div>
       </ng-container>
