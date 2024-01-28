@@ -9,11 +9,15 @@ import { UserRegistComponent } from './pages/user-regist/user-regist.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'top', component: TopComponent },
-  { path: 'user-regist', component: UserRegistComponent },
-  { path: 'discussion', component: DiscussionComponent },
-  { path: 'character-select', component: CharacterSelectComponent },
-  { path: 'result', component: ResultComponent },
+  { path: 'top', component: TopComponent, data: { animation: 'top' } },
+  { path: 'user-regist', component: UserRegistComponent, data: { animation: 'user-regist' } },
+  { path: 'discussion', component: DiscussionComponent, data: { animation: 'discssion' } },
+  {
+    path: 'character-select',
+    component: CharacterSelectComponent,
+    data: { animation: 'character-select' },
+  },
+  { path: 'result', component: ResultComponent, data: { animation: 'result' } },
 ];
 
 @NgModule({
